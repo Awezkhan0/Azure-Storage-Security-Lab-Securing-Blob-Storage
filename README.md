@@ -84,4 +84,15 @@ The file loads again in incognito — but only with the SAS token appended to th
 ### Phase 2 — Public containers blocked at account level
 ![Phase 2 - Anonymous Access Locked at Account Level](https://github.com/Awezkhan0/Azure-Storage-Security-Lab-Securing-Blob-Storage/blob/main/Screenshots/14%20-%20Phase%202%20-%20Anonymous%20Access%20Locked%20at%20Account%20Level%20(New%20Container).png?raw=true)
 
+---
+ 
+## What I Tested
+ 
+- ☑ **Test 1** — Opened the public blob URL in an incognito window with no login. The image loaded — confirming public exposure.
+- ☑ **Test 2** — Set the container to Private, refreshed the same URL. Returned `ResourceNotFound` — public access blocked.
+- ☑ **Test 3** — Generated a read-only, 1-hour SAS token and opened the SAS URL incognito. The image loaded — controlled access works.
+- ☑ **Test 4** — Confirmed the plain URL (no token) still returned `ResourceNotFound` while the SAS URL worked — proving the token is what grants access.
+- ☑ **Test 5** — Disabled account-level anonymous access, then tried to create a public container. Azure blocked it — defence in depth confirmed.
+---
+
 After disabling anonymous access at the account level, trying to create a public container is blocked — the access dropdown is locked to Private. Defence in depth: the mistake can't be made.
