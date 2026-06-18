@@ -31,3 +31,14 @@ PHASE 1 — Insecure
   🛡️ Anonymous Access unselected   ──▶   🚫 No public option   ──▶   Defence in depth
 ```
 ---
+
+## What I Used
+ 
+**Resource Group**
+- rg-storage-lab — holds the lab, easy to delete in one go for cleanup
+
+**Storage Account**
+- stsecurebloblab — Standard performance, LRS redundancy, West Europe
+
+**Container**
+- public-files — a blob container, used to demonstrate public → private
