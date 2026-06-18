@@ -96,3 +96,20 @@ The file loads again in incognito — but only with the SAS token appended to th
 ---
 
 After disabling anonymous access at the account level, trying to create a public container is blocked — the access dropdown is locked to Private. Defence in depth: the mistake can't be made.
+
+
+---
+ 
+## What I Learned
+ 
+**Public blob access is a real security risk** — A blob container set to public is readable by anyone on the internet who has the URL. This is a leading cause of real-world cloud data leaks, which is why Azure now disables it by default on new accounts.
+ 
+**Private access doesn't leak information** — When access is denied, Azure returns "ResourceNotFound" rather than "Access Denied," so it never confirms to an unauthorised user whether a file even exists. 
+ 
+**SAS tokens enable controlled sharing** — A SAS token grants scoped, time-limited, signed access to a specific resource without making it public or sharing account keys. Read-only + short expiry + HTTPS-only is least privilege applied to storage. The token itself should be protected like a password.
+ 
+**Defence in depth** — Securing one container isn't enough. Disabling anonymous access at the account level means public containers can't be created at all, removing the possibility of the mistake rather than relying on every container being set correctly. This layered approach echoes securing a network at both the subnet (NSG) and rule level.
+ 
+**Naming conventions differ by resource type** — Storage account names must be globally unique, lowercase, alphanumeric, no hyphens — unlike the hyphenated `rg-` convention for resource groups.
+ 
+---
