@@ -107,6 +107,8 @@ After disabling anonymous access at the account level, trying to create a public
 **Private access doesn't leak information** — When access is denied, Azure returns "ResourceNotFound" rather than "Access Denied," so it never confirms to an unauthorised user whether a file even exists. 
  
 **SAS tokens enable controlled sharing** — A SAS token grants scoped, time-limited, signed access to a specific resource without making it public or sharing account keys. Read-only + short expiry + HTTPS-only is least privilege applied to storage. The token itself should be protected like a password.
+
+Each SAS token carries its own permissions and expiry: sp=r (read-only), se= (expiry time), and sig= (a signature signed with the storage account key). This is what lets you grant scoped, time-limited access to one blob without making it public or handing over your keys.
  
 **Defence in depth** — Securing one container isn't enough. Disabling anonymous access at the account level means public containers can't be created at all, removing the possibility of the mistake rather than relying on every container being set correctly. This layered approach echoes securing a network at both the subnet (NSG) and rule level.
  
