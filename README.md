@@ -28,6 +28,6 @@ PHASE 1 — Insecure
 
   🔑 SAS token holder     ──▶   ⏳ Read-only, expires   ──▶   🐱 File loads
 
-  🛡️ Account switch off   ──▶   🚫 No public allowed    ──▶   Defence in depth
+  🛡️ Anonymous Access unselected   ──▶   🚫 No public allowed    ──▶   Defence in depth
 ```
 ---
